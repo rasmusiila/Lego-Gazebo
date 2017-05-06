@@ -11,5 +11,6 @@ c = ev3.ColorSensor('In3')
 
 while True:
     print(c.reflected_light_intensity)
+    print(c.red)
 
 

@@ -1990,7 +1990,7 @@ class ColorSensor(Sensor):
         # # self._threads.append(t)
         # t.start()
         # return reflection
-        return '{0:g}'.format(round(self._sensor.listener_reflect() * 100, 0))
+        return int('{0:g}'.format(round(self._sensor.listener_reflect() * 100, 0)))
 
     @property
     def ambient_light_intensity(self):
@@ -2030,7 +2030,7 @@ class ColorSensor(Sensor):
         """
         if self.auto_mode:
             self.mode = self.MODE_RGB_RAW
-        return '{0:g}'.format(round(self._sensor.listener_raw_color(), 0))
+        return self._sensor.listener_raw_color()
 
     @property
     def red(self):
@@ -2041,7 +2041,7 @@ class ColorSensor(Sensor):
         """
         if self.auto_mode:
             self.mode = self.MODE_RGB_RAW
-        return '{0:g}'.format(round(self._sensor.listener_raw_color()[0], 0))
+        return self._sensor.listener_raw_color()[0]
 
     @property
     def green(self):
@@ -2052,7 +2052,7 @@ class ColorSensor(Sensor):
         """
         if self.auto_mode:
             self.mode = self.MODE_RGB_RAW
-        return '{0:g}'.format(round(self._sensor.listener_green()[1], 0))
+        return self._sensor.listener_raw_color()[1]
 
     @property
     def blue(self):
@@ -2063,7 +2063,7 @@ class ColorSensor(Sensor):
         """
         if self.auto_mode:
             self.mode = self.MODE_RGB_RAW
-        return '{0:g}'.format(round(self._sensor.listener_blue()[2], 0))
+        return self._sensor.listener_raw_color()[2]
 
 
 class UltrasonicSensor(Sensor):
@@ -2117,7 +2117,7 @@ class UltrasonicSensor(Sensor):
         if self.auto_mode:
             self.mode = self.MODE_US_DIST_CM
 
-        return '{0:g}'.format(round(self._sensor.get_distance() * 1000, 0))
+        return int('{0:g}'.format(round(self._sensor.get_distance() * 1000, 0)))
 
     @property
     def distance_inches(self):
@@ -2129,7 +2129,7 @@ class UltrasonicSensor(Sensor):
         if self.auto_mode:
             self.mode = self.MODE_US_DIST_IN
 
-        return '{0:g}'.format(round(self._sensor.get_distance() * 393.7, 0))
+        return int('{0:g}'.format(round(self._sensor.get_distance() * 393.7, 0)))
 
     @property
     def other_sensor_present(self):
@@ -2200,7 +2200,7 @@ class GyroSensor(Sensor):
         if self.auto_mode:
             self.mode = self.MODE_GYRO_ANG
 
-        return '{0:g}'.format(round(self._sensor.return_yaw(), 0))
+        return int('{0:g}'.format(round(self._sensor.return_yaw(), 0)))
 
     @property
     def rate(self):
@@ -2212,7 +2212,7 @@ class GyroSensor(Sensor):
         if self.auto_mode:
             self.mode = self.MODE_GYRO_RATE
 
-        return '{0:g}'.format(round(self._sensor.get_rate(), 0))
+        return int('{0:g}'.format(round(self._sensor.get_rate(), 0)))
 
     @property
     def rate_and_angle(self):
@@ -2224,7 +2224,7 @@ class GyroSensor(Sensor):
         if self.auto_mode:
             self.mode = self.MODE_GYRO_G_A
 
-        return '{0:g}'.format(round(self._sensor.return_yaw(), 0)), '{0:g}'.format(round(self._sensor.get_rate(), 0))
+        return int('{0:g}'.format(round(self._sensor.return_yaw(), 0))), int('{0:g}'.format(round(self._sensor.get_rate(), 0)))
 
 
 class InfraredSensor(Sensor):
