@@ -30,7 +30,7 @@ class GazGyro:
                 self.current_yaw = self.initial_yaw
                 self.previous_yaw = self.initial_yaw
                 self.current_time = time.time()
-                print("just set the initial yaw to: ", self.initial_yaw)
+                # print("just set the initial yaw to: ", self.initial_yaw)
             else:
                 self.get_yaw()
         self.times_listened += 1  # for some reason the first set of data always gives old data
@@ -64,7 +64,7 @@ class GazGyro:
             return 0 # the problem here is that if you ask the yaw immediately after initialising the sensor, it won't have enough time to fetch the data
 
     def return_yaw(self):
-        return self.total_yaw
+        return -self.total_yaw
 
     def get_rate(self):
         if self.previous_yaw is not None:
@@ -80,7 +80,7 @@ class GazGyro:
                 yaw_difference += 360
             elif yaw_difference > 270:
                 yaw_difference -= 360
-            return yaw_difference / (self.current_time - previous_time)
+            return -yaw_difference / (self.current_time - previous_time)
         else:
             return 0 # the problem here is that if you ask the yaw immediately after initialising the sensor, it won't have enough time to fetch the data
 
