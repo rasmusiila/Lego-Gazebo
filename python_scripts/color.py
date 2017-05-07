@@ -10,6 +10,6 @@ import time
 c = ev3.ColorSensor('in3')
 
 while True:
-    print(c.reflected_light_intensity)
+    print(c.color)
 
 
