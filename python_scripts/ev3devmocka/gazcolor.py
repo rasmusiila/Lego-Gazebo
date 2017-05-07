@@ -27,21 +27,24 @@ class GazColor:
                 break
 
     def listener_color(self):
-        return self.get_image_color()
+        while True:
+            if self.ready:
+                return self.get_image_color()
 
     def listener_raw_color(self):
         while True:
             if self.ready:
                 return self.get_image_raw_color()
-                break
 
     def listener_reflect(self):
-        while self.image_height == 0:
-            time.sleep(0.01)
-        return self.get_image_reflect()
+        while True:
+            if self.ready:
+                return self.get_image_reflect()
 
     def get_image_color(self):
         color_dict = self.color_dict
+        if color_dict is None:
+            return 0
 
         dominant_color = max(color_dict, key=color_dict.get)
         if dominant_color == 'none':
@@ -56,8 +59,8 @@ class GazColor:
             return 5
         elif dominant_color == 'white':
             return 6
-
-        return dominant_color
+        else:
+            return 0
 
     def get_totals(self):
         image_height = self.image_height
