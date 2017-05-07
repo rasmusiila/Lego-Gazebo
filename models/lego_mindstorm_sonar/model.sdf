@@ -126,7 +126,7 @@
         <update_rate>30</update_rate>
         <visualize>true</visualize>
 
-	<plugin name="sonar_controller" filename="libhector_gazebo_ros_sonar.so">
+	<plugin name="sonar_controller" filename="libgazebo_ros_sonar.so">
           <robotNamespace>lego_robot</robotNamespace>
 	  <topicName>sonar</topicName>
         </plugin>
