@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "mawNoo"
 cd ~
 DIRECTORY="lego_test"
 

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+echo "drayYes"
 echo ".."
 echo ".."
 echo ".."
