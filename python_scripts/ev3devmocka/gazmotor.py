@@ -20,8 +20,8 @@ class GazMotor:
         current_counter = self.motor_counter
         pub = rospy.Publisher('lego_robot/cmd_vel_' + self.wheel, Twist, queue_size=10)
 
-        publishFrequency = 10
-        rate = rospy.Rate(publishFrequency)  # 10hz
+        publishFrequency = 60
+        rate = rospy.Rate(publishFrequency)  # 60hz
         counter = 0
 
         t_end = time.time() + kwargs['time_sp'] / 1000
@@ -58,8 +58,8 @@ class GazMotor:
         # running the robot at duty_cycle_sp of 100 gave me a speed of 880 something in the air
         # running on the ground it got like 800
 
-        publishFrequency = 10
-        rate = rospy.Rate(publishFrequency)  # 10hz
+        publishFrequency = 60
+        rate = rospy.Rate(publishFrequency)  # 60hz
         counter = 0
 
         while not rospy.is_shutdown() and not self.stopped:
