@@ -54,7 +54,7 @@ if [ "$exercise_name" == "" ]; then
     exit 1
 fi
 
-if ! [ -f "/home/robot/Lego-Gazebo/catkin_ws/src/lego_gazebo/launch/lego_$exercise_name$map_number.launch" ]; then
+if ! [ -f "${PWD}/../Lego-Gazebo/catkin_ws/src/lego_gazebo/launch/lego_$exercise_name$map_number.launch" ]; then
     echo "There's no map $map_number for this exercise."
     exit 1
 fi
@@ -68,6 +68,7 @@ fi
 
 if ! [ -f "$directory_name.py" ]; then
     echo "Your directory $directory_name does not contain the necessary $directory_name.py file."
+    exit 1
 fi
 
 x-terminal-emulator -e roslaunch lego_gazebo lego_$exercise_name$map_number.launch
