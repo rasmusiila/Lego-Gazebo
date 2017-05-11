@@ -6,21 +6,19 @@ import ev3devmocka.ev3 as ev3
 import rospy
 import time
 
-
+m = ev3.LargeMotor('outA')
 c = ev3.GyroSensor('In1')
 
-time.sleep(5)
+m.speed_sp = 360
+time.sleep(3)
 
-for i in range(0, 9):
+t = time.time()
+m.run_forever()
+while True:
     print(c.angle)
-    time.sleep(0.3)
+    if c.angle >= 1800:
+        print("OMG 10 spins!")
+        print(time.time() - t)
+        break
 
-for i in range(0, 9):
-    print(c.rate)
-    time.sleep(1)
-
-for i in range(0, 9):
-    print(c.angle)
-    time.sleep(0.3)
-
-
+m.stop()
