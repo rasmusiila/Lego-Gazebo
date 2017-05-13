@@ -30,6 +30,8 @@
 
 # -----------------------------------------------------------------------------
 
+# This file has been modified by Rasmus Iila <rasmusiila@gmail.com>
+
 import sys
 
 if sys.version_info < (3, 4):
@@ -53,12 +55,11 @@ from struct import pack, unpack
 from subprocess import Popen, check_output
 
 # ADDED
-# import ev3devmocka.gazmotor
-from ev3devmocka.gazmotor import GazMotor
-from ev3devmocka.gazcolor import GazColor
-from ev3devmocka.gazsonar import GazSonar
-from ev3devmocka.gazgyro import GazGyro
-from ev3devmocka.gaztouch import GazTouch
+from ev3dev.gazmotor import GazMotor
+from ev3dev.gazcolor import GazColor
+from ev3dev.gazsonar import GazSonar
+from ev3dev.gazgyro import GazGyro
+from ev3dev.gaztouch import GazTouch
 import threading
 import rospy
 

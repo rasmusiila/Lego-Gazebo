@@ -5,7 +5,7 @@
  @author: Martin Ojamets
 """
 
-from ev3devmocka import ev3
+from ev3dev import ev3
 
 
 class Robot:
