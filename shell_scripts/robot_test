@@ -17,7 +17,7 @@ git_address="https://github.com/$git_user_name/$DIRECTORY.git"
 echo $git_address
 
 if [ -d "$DIRECTORY" ]; then
-    echo "Repository already exists. Updating..."
+    echo "Repository already exists. Updating.."
     cd $DIRECTORY
     git pull
 else
