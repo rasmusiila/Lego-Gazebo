@@ -56,6 +56,7 @@ from subprocess import Popen, check_output
 
 # ADDED
 from ev3dev.gazmotor import GazMotor
+from ev3dev.gazmedmotor import GazMedMotor
 from ev3dev.gazcolor import GazColor
 from ev3dev.gazsonar import GazSonar
 from ev3dev.gazgyro import GazGyro
@@ -1057,7 +1058,42 @@ class MediumMotor(Motor):
     SYSTEM_DEVICE_NAME_CONVENTION = '*'
 
     def __init__(self, address=None, name_pattern=SYSTEM_DEVICE_NAME_CONVENTION, name_exact=False, **kwargs):
+
+
+        med = GazMedMotor()
+
         super(MediumMotor, self).__init__(address, name_pattern, name_exact, driver_name=['lego-ev3-m-motor'], **kwargs)
+
+        self._address = address
+        # self._command = None  # writeonly
+        self._commands = ['run-forever', 'run-to-abs-pos', 'run-to-rel-pos', 'run_timed', 'run-direct', 'stop', 'reset']
+        self._count_per_rot = 360
+        # self._count_per_m = None  #
+        self._driver_name = 'lego-ev3-l-motor'
+        self._duty_cycle = 0
+        self._duty_cycle_sp = 0
+        # self._full_travel_count = None  #
+        self._polarity = 'normal'
+        self._position = 0
+        self._position_p = 80000
+        self._position_i = 0
+        self._position_d = 0
+        self._position_sp = 0
+        self._max_speed = 1050
+        self._speed = 0
+        self._speed_sp = 0
+        self._ramp_up_sp = 0
+        self._ramp_down_sp = 0
+        self._speed_p = 1000
+        self._speed_i = 60
+        self._speed_d = 0
+        self._state = []
+        self._stop_action = 'coast'  # lego robot says 'coast'
+        self._stop_actions = ['coast', 'brake', 'hold']
+        self._time_sp = 0
+
+        self._motor = med
+        self._threads = []
 
     # ~autogen
     __slots__ = [
